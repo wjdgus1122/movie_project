@@ -1,3 +1,10 @@
+import { PageTitle } from "../../PageTitle";
+
 export const Login = () => {
-  return <>Login</>;
+  return (
+    <>
+      <PageTitle title="LogIn" />
+      Login
+    </>
+  );
 };

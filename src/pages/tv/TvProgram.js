@@ -1,3 +1,10 @@
+import { PageTitle } from "../../PageTitle";
+
 export const TvProgram = () => {
-  return <>TvProgram</>;
+  return (
+    <>
+      <PageTitle title="TV" />
+      TvProgram
+    </>
+  );
 };
