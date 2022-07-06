@@ -6,8 +6,7 @@
 
 ## Main Page
 
--[] Header
--[] Footer
+-[x] Header -[x] Footer
 -[] MainBanner
 -[] Main Section
 
