@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { apiData } from "../../api";
 import { Loading } from "../Loading";
 import { MainBanner } from "./MainBanner";
+import { ContentNum } from "../../constant/constant";
 
 export const Home = () => {
   const [mvplay, setMvPlay] = useState();
@@ -42,7 +43,11 @@ export const Home = () => {
       {loading ? (
         <Loading />
       ) : (
-        <MainBanner mvdt={mvplay[0]} tvpl={tvplay[0]} tvp={tvpo[0]} />
+        <MainBanner
+          mvdt={mvplay[ContentNum]}
+          tvpl={tvplay[ContentNum]}
+          tvp={tvpo[ContentNum]}
+        />
       )}
     </>
   );

@@ -7,6 +7,8 @@ import { Pagination } from "swiper";
 import { Autoplay } from "swiper";
 import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 const SMainBanner = styled.section`
   width: 100%;
@@ -36,15 +38,54 @@ const Btn = styled.div`
   border: 1px solid #efefef;
   border-radius: 15px;
   margin-top: 30px;
-  transition: 1s;
+  font-size: 18px;
   cursor: pointer;
-  &::after {
-    width: 0%;
-    height: 50px;
-    background-color: lightgray;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+  &.onair {
+    justify-content: space-around;
+    color: red;
+    border: 1px solid red;
+    .live {
+      font-size: 10px;
+    }
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: rgb(158, 6, 6);
+      border-radius: 13px;
+      position: absolute;
+      top: 0;
+      left: -100%;
+      z-index: -1;
+      transition: all 0.4s;
+    }
+    &:hover {
+      border: 1px solid rgb(158, 6, 6);
+    }
   }
-  &:hover::after {
+  &::before {
+    content: "";
     width: 100%;
+    height: 100%;
+    background-color: rgb(215, 215, 215);
+    border-radius: 13px;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+  &:hover::before {
+    transform: translateX(100%);
+  }
+  &:hover {
+    color: #333;
+    &.onair {
+      color: #efefef;
+    }
   }
 `;
 const Box = styled.div`
@@ -85,7 +126,9 @@ export const MainBanner = ({ mvdt, tvpl, tvp }) => {
           >
             <TextWrap>
               <Title>{tvpl.name}</Title>
-              <Btn>바로가기</Btn>
+              <Btn className="onair">
+                On Air <FontAwesomeIcon icon={faCircle} className="live" />
+              </Btn>
             </TextWrap>
             <Box />
           </SMainBanner>
