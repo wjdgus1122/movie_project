@@ -22,6 +22,9 @@ const Title = styled.div`
   font-weight: 700;
   margin-top: 50px;
   padding: ${mainStyle.padding};
+  @media screen and (max-width: 500px) {
+    padding: ${mainStyle.mopadding};
+  }
 `;
 const Title2 = styled.div`
   font-size: 50px;
@@ -29,6 +32,9 @@ const Title2 = styled.div`
   text-align: end;
   margin-top: 50px;
   padding: ${mainStyle.padding};
+  @media screen and (max-width: 500px) {
+    padding: ${mainStyle.mopadding};
+  }
 `;
 
 const Section = styled.div``;

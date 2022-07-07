@@ -15,18 +15,29 @@ const SMainBanner = styled.section`
   height: 100vh;
   padding: ${mainStyle.padding};
   position: relative;
+  @media screen and (max-width: 500px) {
+    padding: ${mainStyle.mopadding};
+  }
 `;
 const TextWrap = styled.div`
   position: absolute;
   left: 80px;
   bottom: 50px;
   z-index: 9;
+  @media screen and (max-width: 500px) {
+    left: 20px;
+  }
 `;
 const Title = styled.div`
   width: 700px;
   font-size: 80px;
   font-weight: 700;
   line-height: 100px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    font-size: 50px;
+    line-height: 70px;
+  }
 `;
 
 const Btn = styled.div`
@@ -87,6 +98,14 @@ const Btn = styled.div`
   &:hover {
     color: #333;
     font-weight: 600;
+  }
+  @media screen and (max-width: 500px) {
+    background-color: ${mainStyle.btncolor};
+    color: #333;
+    &.onair {
+      background-color: red;
+      color: ${mainStyle.btncolor};
+    }
   }
 `;
 const Box = styled.div`
