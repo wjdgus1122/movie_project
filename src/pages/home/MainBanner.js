@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const SMainBanner = styled.section`
   width: 100%;
@@ -133,7 +134,9 @@ export const MainBanner = ({ mvdt, tvpl, tvp }) => {
           >
             <TextWrap>
               <Title>{mvdt.title}</Title>
-              <Btn>바로가기</Btn>
+              <Link to={`/detail1/${mvdt.id}`}>
+                <Btn>바로가기</Btn>
+              </Link>
             </TextWrap>
             <Box />
           </SMainBanner>
@@ -146,9 +149,11 @@ export const MainBanner = ({ mvdt, tvpl, tvp }) => {
           >
             <TextWrap>
               <Title>{tvpl.name}</Title>
-              <Btn className="onair">
-                On Air <FontAwesomeIcon icon={faCircle} className="live" />
-              </Btn>
+              <Link to={`/detail2/${tvpl.id}`}>
+                <Btn className="onair">
+                  On Air <FontAwesomeIcon icon={faCircle} className="live" />
+                </Btn>
+              </Link>
             </TextWrap>
             <Box />
           </SMainBanner>
@@ -161,7 +166,9 @@ export const MainBanner = ({ mvdt, tvpl, tvp }) => {
           >
             <TextWrap>
               <Title>{tvp.name}</Title>
-              <Btn>바로가기</Btn>
+              <Link to={`/detail2/${tvp.id}`}>
+                <Btn>바로가기</Btn>
+              </Link>
             </TextWrap>
             <Box />
           </SMainBanner>

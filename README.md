@@ -16,12 +16,12 @@
 
 ## Sub Page
 
-- [] Movie Page
-- [] TV Program Page
-- [] Login
-- [] My Page
+- [ ] Movie Page
+- [ ] TV Program Page
+- [ ] Login
+- [ ] My Page
 
 ## Detail Page
 
 - [x] Detail
-- [] Detail Responsive
+- [x] Detail Responsive

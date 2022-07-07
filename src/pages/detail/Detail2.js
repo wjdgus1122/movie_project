@@ -14,6 +14,9 @@ const DetailSection = styled.div`
   height: 100vh;
   padding: ${mainStyle.padding};
   position: relative;
+  @media screen and (max-width: 500px) {
+    padding: ${mainStyle.mopadding};
+  }
 `;
 const Box = styled.div`
   width: 100%;
@@ -28,12 +31,20 @@ const TextWrap = styled.div`
   position: absolute;
   left: 80px;
   bottom: 50px;
+  @media screen and (max-width: 500px) {
+    left: 20px;
+    bottom: 20px;
+  }
 `;
 const Title = styled.div`
   font-size: 80px;
   font-weight: 700;
   position: relative;
   z-index: 2;
+  @media screen and (max-width: 500px) {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
 `;
 
 const STextWrap = styled.div`
@@ -43,6 +54,9 @@ const STextWrap = styled.div`
   font-size: 30px;
   font-weight: 500;
   margin-top: 20px;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 const Runtime = styled.h3``;
 const Genres = styled.ul`
@@ -58,6 +72,9 @@ const Text = styled.div`
   margin-bottom: 20px;
   position: relative;
   z-index: 2;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 const Btn = styled.div`
   width: 150px;
@@ -68,6 +85,10 @@ const Btn = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  @media screen and (max-width: 500px) {
+    width: 100px;
+    height: 50px;
+  }
 `;
 const BtnText = styled.div`
   width: 100%;
@@ -94,6 +115,20 @@ const BtnText = styled.div`
   }
   &:hover::before {
     transform: translateX(100%);
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
+`;
+const MoText = styled.div`
+  width: 100%;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 25px;
+  padding: ${mainStyle.mopadding};
+  display: none;
+  @media screen and (max-width: 500px) {
+    display: block;
   }
 `;
 
@@ -155,6 +190,7 @@ export const Detail2 = () => {
                   </Btn>
                 </TextWrap>
               </DetailSection>
+              <MoText>{de.overview}</MoText>
             </>
           )}
         </>
