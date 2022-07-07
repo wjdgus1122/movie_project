@@ -16,10 +16,14 @@ const SHeader = styled.div`
     padding: ${mainStyle.mopadding};
   }
 `;
+const LogoWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const Logo = styled.div`
   font-size: 30px;
   font-weight: 700;
-  color: #ffc947;
+  color: ${mainStyle.color};
 `;
 const MenuWrap = styled.div`
   display: flex;
@@ -27,7 +31,7 @@ const MenuWrap = styled.div`
 `;
 const Menu = styled.div`
   margin-left: 30px;
-  color: #efefef;
+  color: ${mainStyle.btncolor};
 `;
 const User = styled.div`
   width: 30px;
@@ -41,16 +45,18 @@ const User = styled.div`
 export const Header = () => {
   return (
     <SHeader>
-      <Link to="/movie">
-        <Logo>JH+</Logo>
-      </Link>
-      <MenuWrap>
+      <LogoWrap>
+        <Link to="/">
+          <Logo>JH+</Logo>
+        </Link>
         <Link to="/movie">
           <Menu>Movie</Menu>
         </Link>
         <Link to="/tv">
           <Menu>TV</Menu>
         </Link>
+      </LogoWrap>
+      <MenuWrap>
         <Link to="/mypage">
           <Menu>My Page</Menu>
         </Link>

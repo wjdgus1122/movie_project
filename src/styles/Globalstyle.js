@@ -5,7 +5,8 @@ export const mainStyle = {
   padding: "0 80px",
   mopadding: "0 20px",
   color: "#FFC947",
-  bordercolor: "EFEFEF",
+  btncolor: "#EFEFEF",
+  livecolor: "red",
 };
 
 export const Globalstyle = createGlobalStyle`

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
 import "swiper/css";
-import { Pagination } from "swiper";
+import { Navigation, Pagination } from "swiper";
 import { Autoplay } from "swiper";
 import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
@@ -12,7 +12,7 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 const SMainBanner = styled.section`
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   padding: ${mainStyle.padding};
   position: relative;
 `;
@@ -35,7 +35,8 @@ const Btn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #efefef;
+  border: 1px solid ${mainStyle.btncolor};
+  color: ${mainStyle.btncolor};
   border-radius: 15px;
   margin-top: 30px;
   font-size: 18px;
@@ -45,8 +46,8 @@ const Btn = styled.div`
   transition: all 0.4s;
   &.onair {
     justify-content: space-around;
-    color: red;
-    border: 1px solid red;
+    color: ${mainStyle.livecolor};
+    border: 1px solid ${mainStyle.livecolor};
     .live {
       font-size: 10px;
     }
@@ -64,6 +65,8 @@ const Btn = styled.div`
     }
     &:hover {
       border: 1px solid rgb(158, 6, 6);
+      color: ${mainStyle.btncolor};
+      font-weight: 600;
     }
   }
   &::before {
@@ -83,9 +86,7 @@ const Btn = styled.div`
   }
   &:hover {
     color: #333;
-    &.onair {
-      color: #efefef;
-    }
+    font-weight: 600;
   }
 `;
 const Box = styled.div`
@@ -103,7 +104,7 @@ export const MainBanner = ({ mvdt, tvpl, tvp }) => {
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 2000, disableOnInteraction: true }}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
       >
         <SwiperSlide>
           <SMainBanner
