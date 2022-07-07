@@ -45,7 +45,7 @@ export const Section2 = ({ con, contitle }) => {
         <Swiper modules={[Navigation]} navigation {...params}>
           {con.map((con) => (
             <SwiperSlide key={con.id}>
-              <Link to={`/detail/${con.id}`}>
+              <Link to={`/detail2/${con.id}`}>
                 <ConImg
                   style={{
                     background: `url(${

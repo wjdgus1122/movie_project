@@ -1,6 +1,7 @@
 import { HelmetProvider } from "react-helmet-async";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import { Detail } from "./pages/detail/Detail";
+import { Detail1 } from "./pages/detail/Detail1";
+import { Detail2 } from "./pages/detail/Detail2";
 import { Footer } from "./pages/Footer";
 import { Header } from "./pages/Header";
 import { Home } from "./pages/home/Home";
@@ -20,7 +21,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/movie" element={<Movie />} />
           <Route path="/tv" element={<TvProgram />} />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail1/:id" element={<Detail1 />} />
+          <Route path="/detail2/:id" element={<Detail2 />} />
           <Route path="/login" element={<Login />} />
           <Route path="/mypage" element={<MyPage />} />
         </Routes>
