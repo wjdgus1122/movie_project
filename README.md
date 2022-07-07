@@ -2,21 +2,26 @@
 
 ## Total Step
 
--[x] first setting -[x] Route -[x] Helmet
+- [x] first setting
+- [x] Route
+- [x] Helmet
 
 ## Main Page
 
--[x] Header -[x] Footer
--[] MainBanner
--[] Main Section
+- [x] Header
+- [x] Footer
+- [x] MainBanner
+- [x] Main Section
+- [x] Main Responsive
 
 ## Sub Page
 
--[] Movie Page
--[] TV Program Page
--[] Login
--[] My Page
+- [] Movie Page
+- [] TV Program Page
+- [] Login
+- [] My Page
 
 ## Detail Page
 
--[] Detail
+- [x] Detail
+- [] Detail Responsive

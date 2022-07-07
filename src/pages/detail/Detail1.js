@@ -7,7 +7,6 @@ import { imgUrl } from "../../constant/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import { Container } from "../Container";
 import { mainStyle } from "../../styles/Globalstyle";
 
 const DetailSection = styled.div`
