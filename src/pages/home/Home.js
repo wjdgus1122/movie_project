@@ -37,7 +37,11 @@ const Title2 = styled.div`
   }
 `;
 
-const Section = styled.div``;
+const Section = styled.div`
+  &:last-child {
+    margin-bottom: 20px;
+  }
+`;
 
 export const Home = () => {
   const [mvplay, setMvPlay] = useState();
