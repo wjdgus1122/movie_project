@@ -10,7 +10,7 @@ import AOS from "aos";
 const Title = styled.div`
   font-size: 50px;
   font-weight: 700;
-  padding-top: 100px;
+  padding-top: 130px;
   margin-bottom: 50px;
 `;
 const ConWrap = styled.div``;
@@ -68,7 +68,7 @@ export const Movie = () => {
         <Loading />
       ) : (
         <Container>
-          <Title>Movie</Title>
+          <Title>MOVIE</Title>
           <ConWrap>
             <Con data-aos="fade-up" data-aos-duration="1500">
               <ConBox Con={mvplay} />
