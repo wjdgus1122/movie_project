@@ -16,8 +16,8 @@
 
 ## Sub Page
 
-- [ ] Movie Page
-- [ ] TV Program Page
+- [x] Movie Page
+- [x] TV Program Page
 - [ ] Login
 - [ ] My Page
 

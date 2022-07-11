@@ -6,12 +6,19 @@ import { apiData } from "../../api";
 import { ConBox } from "./ConBox";
 import { Container } from "../Container";
 import AOS from "aos";
+import { mainStyle } from "../../styles/Globalstyle";
 
 const Title = styled.div`
   font-size: 50px;
   font-weight: 700;
   padding-top: 130px;
   margin-bottom: 50px;
+  color: ${mainStyle.color};
+  @media screen and (max-width: 500px) {
+    font-size: 40px;
+    padding-top: 100px;
+    margin-bottom: 20px;
+  }
 `;
 const ConWrap = styled.div``;
 const Con = styled.div`
@@ -22,6 +29,11 @@ const Con = styled.div`
   margin-bottom: 30px;
   &:last-child {
     margin-bottom: 30px;
+  }
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+    column-gap: 20px;
   }
 `;
 
