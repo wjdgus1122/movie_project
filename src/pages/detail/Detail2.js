@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
+import { PageScroll } from "../PageScroll";
 
 const DetailSection = styled.div`
   width: 100%;
@@ -151,6 +152,7 @@ export const Detail2 = () => {
   return (
     <>
       <PageTitle title="Detail" />
+      <PageScroll />
       {loading ? (
         <Loading />
       ) : (

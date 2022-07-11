@@ -21,4 +21,6 @@ export const apiData = {
   tv_OnTheAir: () => baseapi.get("/tv/on_the_air"),
   tv_Latest: () => baseapi.get("/tv/latest"),
   tv_Detail: (id) => baseapi.get(`/tv/${id}`),
+  mv_video: (id) => baseapi.get(`/movie/${id}/videos`),
+  tv_video: (id) => baseapi.get(`/tv/${id}/videos`),
 };
