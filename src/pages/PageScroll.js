@@ -1,7 +1,14 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 export const PageScroll = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  const a = useLocation();
+  console.log(a);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [a]);
   return null;
 };

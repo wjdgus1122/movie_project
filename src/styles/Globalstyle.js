@@ -7,6 +7,7 @@ export const mainStyle = {
   color: "#FFC947",
   btncolor: "#EFEFEF",
   livecolor: "red",
+  backcolor: "#0A1931",
 };
 
 export const Globalstyle = createGlobalStyle`

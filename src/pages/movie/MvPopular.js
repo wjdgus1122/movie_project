@@ -8,25 +8,7 @@ import { Container } from "../Container";
 import { mainStyle } from "../../styles/Globalstyle";
 import AOS from "aos";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PageScroll } from "../PageScroll";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-
-const UpBtn = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${mainStyle.color};
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  cursor: pointer;
-`;
 
 const TitleWrap = styled.div`
   width: 100%;
@@ -68,8 +50,10 @@ const TitleMenu = styled.div`
     margin: 0 10px;
   }
   & a:first-child {
-    font-weight: 700;
     margin-left: 0;
+  }
+  & a:nth-child(3) {
+    font-weight: 700;
   }
   @media screen and (max-width: 500px) {
     font-size: 15px;
@@ -97,35 +81,18 @@ const Con = styled.div`
   }
 `;
 
-export const Movie = () => {
-  const [mvplay, setMvPlay] = useState();
+export const MvPopular = () => {
   const [mvpopu, setMvPopu] = useState();
-  const [mvrate, setMvRate] = useState();
-  const [mvcome, setMvCome] = useState();
   const [logo, setLogo] = useState("block");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const MovieData = async () => {
       try {
         const {
-          data: { results: playingmovie },
-        } = await apiData.movie_Playing();
-        setMvPlay(playingmovie);
-
-        const {
           data: { results: popumovie },
         } = await apiData.movie_Popular();
         setMvPopu(popumovie);
 
-        const {
-          data: { results: ratemovie },
-        } = await apiData.movie_Rated();
-        setMvRate(ratemovie);
-
-        const {
-          data: { results: upcomemovie },
-        } = await apiData.movie_Upcoming();
-        setMvCome(upcomemovie);
         AOS.init();
         setLoading(false);
       } catch (error) {
@@ -143,27 +110,19 @@ export const Movie = () => {
     }
   };
   window.addEventListener("scroll", sclmenu);
-  const upbtnclick = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
   return (
     <>
       <PageTitle title="Movie" />
-
       {loading ? (
         <Loading />
       ) : (
         <>
           <PageScroll />
           <Container>
-            <UpBtn onClick={upbtnclick}>
-              <FontAwesomeIcon icon={faArrowUp} />{" "}
-            </UpBtn>
             <TitleWrap>
-              <Title dis={logo}>MOVIE</Title>
+              <Link to={`/movie`}>
+                <Title dis={logo}>MOVIE</Title>
+              </Link>
               <TitleMenu>
                 <Link to={`/movie`}>
                   <MvMenu>ALL</MvMenu>
@@ -188,16 +147,7 @@ export const Movie = () => {
             </TitleWrap>
             <ConWrap>
               <Con data-aos="fade-up" data-aos-duration="1500">
-                <ConBox Con={mvplay} />
-              </Con>
-              <Con data-aos="fade-up" data-aos-duration="1500">
                 <ConBox Con={mvpopu} />
-              </Con>
-              <Con data-aos="fade-up" data-aos-duration="1500">
-                <ConBox Con={mvrate} />
-              </Con>
-              <Con data-aos="fade-up" data-aos-duration="1500">
-                <ConBox Con={mvcome} />
               </Con>
             </ConWrap>
           </Container>

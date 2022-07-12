@@ -9,7 +9,11 @@ import { Login } from "./pages/login/Login";
 import { Movie } from "./pages/movie/Movie";
 import { MyPage } from "./pages/mypage/MyPage";
 import { TvProgram } from "./pages/tv/TvProgram";
+import { MvPlay } from "./pages/movie/MvPlay";
 import { Globalstyle } from "./styles/Globalstyle";
+import { MvPopular } from "./pages/movie/MvPopular";
+import { MvRate } from "./pages/movie/MvRate";
+import { MvCome } from "./pages/movie/MvCome";
 
 function App() {
   return (
@@ -20,6 +24,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movie" element={<Movie />} />
+          <Route path="/mvplay" element={<MvPlay />} />
+          <Route path="/mvpopu" element={<MvPopular />} />
+          <Route path="/mvrate" element={<MvRate />} />
+          <Route path="/mvcome" element={<MvCome />} />
           <Route path="/tv" element={<TvProgram />} />
           <Route path="/detail1/:id" element={<Detail1 />} />
           <Route path="/detail2/:id" element={<Detail2 />} />

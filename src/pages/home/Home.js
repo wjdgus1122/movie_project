@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { PageScroll } from "../PageScroll";
 
 const SectionWrap = styled.section`
   width: 100%;
@@ -107,10 +108,12 @@ export const Home = () => {
   return (
     <>
       <PageTitle title="Home" />
+
       {loading ? (
         <Loading />
       ) : (
         <>
+          <PageScroll />
           <MainBanner
             mvdt={mvplay[ContentNum]}
             tvpl={tvplay[ContentNum]}
