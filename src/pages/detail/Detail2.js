@@ -135,8 +135,8 @@ const MoText = styled.div`
 const VideoWrap = styled.div``;
 const VideoCon = styled.div`
   width: 100%;
-  height: ${(props) => props.dis};
-  display: flex;
+  height: 100vh;
+  display: ${(props) => props.dis};
   justify-content: center;
   align-items: center;
   position: relative;
@@ -163,7 +163,7 @@ export const Detail2 = () => {
   const [de, setDe] = useState();
   const [vd, setVd] = useState();
   const [loading, setLoading] = useState(true);
-  const [vddis, setVdDis] = useState("0");
+  const [vddis, setVdDis] = useState("none");
   const { id } = useParams();
   useEffect(() => {
     const moviedata = async () => {
@@ -182,16 +182,16 @@ export const Detail2 = () => {
     moviedata();
   }, []);
   const scrollhandel = () => {
-    setVdDis("100vh");
+    setVdDis("flex");
     setTimeout(() => {
       window.scrollTo({
         top: 900,
         behavior: "smooth",
       });
-    }, 500);
+    }, 250);
   };
   const Closehandel = () => {
-    setVdDis("0");
+    setVdDis("none");
 
     window.scrollTo({
       top: 0,
