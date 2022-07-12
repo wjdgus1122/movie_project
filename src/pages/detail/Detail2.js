@@ -5,7 +5,7 @@ import { PageTitle } from "../../PageTitle";
 import { Loading } from "../Loading";
 import { imgUrl } from "../../constant/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faPlay } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
 import { PageScroll } from "../PageScroll";
@@ -132,16 +132,48 @@ const MoText = styled.div`
     display: block;
   }
 `;
+const VideoWrap = styled.div``;
+const VideoCon = styled.div`
+  width: 100%;
+  height: ${(props) => props.dis};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
+const CloseBtn = styled.div`
+  font-size: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+`;
+const Iframe = styled.iframe`
+  width: 100%;
+  height: 90%;
+`;
+const NonText = styled.h1`
+  font-size: 20px;
+  font-weight: 500;
+  padding: ${mainStyle.padding};
+`;
 
 export const Detail2 = () => {
   const [de, setDe] = useState();
+  const [vd, setVd] = useState();
   const [loading, setLoading] = useState(true);
+  const [vddis, setVdDis] = useState("0");
   const { id } = useParams();
   useEffect(() => {
     const moviedata = async () => {
       try {
         const { data } = await apiData.tv_Detail(id);
         setDe(data);
+        const {
+          data: { results },
+        } = await apiData.tv_video(id);
+        setVd(`${results.length === 0 ? null : results[0].key}`);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -149,6 +181,23 @@ export const Detail2 = () => {
     };
     moviedata();
   }, []);
+  const scrollhandel = () => {
+    setVdDis("100vh");
+    setTimeout(() => {
+      window.scrollTo({
+        top: 900,
+        behavior: "smooth",
+      });
+    }, 500);
+  };
+  const Closehandel = () => {
+    setVdDis("0");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <PageTitle title="Detail" />
@@ -185,7 +234,7 @@ export const Detail2 = () => {
                     <Episode>{de.number_of_episodes}부작</Episode>
                   </STextWrap>
                   <Text>{de.overview}</Text>
-                  <Btn>
+                  <Btn onClick={scrollhandel}>
                     <BtnText>
                       재생 <FontAwesomeIcon icon={faPlay} />
                     </BtnText>
@@ -193,6 +242,18 @@ export const Detail2 = () => {
                 </TextWrap>
               </DetailSection>
               <MoText>{de.overview}</MoText>
+              <VideoWrap>
+                {vd ? (
+                  <VideoCon dis={vddis}>
+                    <CloseBtn onClick={Closehandel}>
+                      <FontAwesomeIcon icon={faClose} />
+                    </CloseBtn>
+                    <Iframe src={`https://www.youtube.com/embed/${vd}`} />
+                  </VideoCon>
+                ) : (
+                  <NonText>영상이 없습니다.</NonText>
+                )}
+              </VideoWrap>
             </>
           )}
         </>

@@ -123,9 +123,9 @@ const BtnText = styled.div`
 `;
 const MoText = styled.div`
   width: 100%;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 100;
-  line-height: 25px;
+  line-height: 20px;
   padding: ${mainStyle.mopadding};
   display: none;
   @media screen and (max-width: 500px) {
@@ -135,8 +135,8 @@ const MoText = styled.div`
 const VideoWrap = styled.div``;
 const VideoCon = styled.div`
   width: 100%;
-  height: 100vh;
-  display: ${(props) => props.dis};
+  height: ${(props) => props.dis};
+  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -163,7 +163,7 @@ export const Detail1 = () => {
   const [de, setDe] = useState();
   const [vd, setVd] = useState();
   const [loading, setLoading] = useState(true);
-  const [vddis, setVdDis] = useState("none");
+  const [vddis, setVdDis] = useState("0");
   const { id } = useParams();
   useEffect(() => {
     const moviedata = async () => {
@@ -182,25 +182,16 @@ export const Detail1 = () => {
     moviedata();
   }, []);
   const scrollhandel = () => {
-    setVdDis("flex");
-    const wid = window.innerWidth;
-    if (vddis === "flex") {
-      if (wid > 1000) {
-        window.scrollTo({
-          top: 900,
-          behavior: "smooth",
-        });
-        console.log("hello");
-      } else {
-        window.scrollTo({
-          top: 1200,
-          behavior: "smooth",
-        });
-      }
-    }
+    setVdDis("100vh");
+    setTimeout(() => {
+      window.scrollTo({
+        top: 900,
+        behavior: "smooth",
+      });
+    }, 500);
   };
   const Closehandel = () => {
-    setVdDis("none");
+    setVdDis("0");
 
     window.scrollTo({
       top: 0,
@@ -250,6 +241,7 @@ export const Detail1 = () => {
                   </Btn>
                 </TextWrap>
               </DetailSection>
+              <MoText>{de.overview}</MoText>
               <VideoWrap>
                 {vd ? (
                   <VideoCon dis={vddis}>
@@ -262,7 +254,6 @@ export const Detail1 = () => {
                   <NonText>영상이 없습니다.</NonText>
                 )}
               </VideoWrap>
-              <MoText>{de.overview}</MoText>
             </>
           )}
         </>
