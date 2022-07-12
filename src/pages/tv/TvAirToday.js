@@ -69,8 +69,10 @@ const TitleMenu = styled.div`
     margin: 0 10px;
   }
   & a:first-child {
-    font-weight: 700;
     margin-left: 0;
+  }
+  & a:nth-child(5) {
+    font-weight: 700;
   }
   @media screen and (max-width: 500px) {
     font-size: 15px;
@@ -98,35 +100,19 @@ const Con = styled.div`
   }
 `;
 
-export const TvProgram = () => {
-  const [tvplay, setTvPlay] = useState();
-  const [tvpo, setTvpo] = useState();
+export const TvAirToday = () => {
   const [tvair, setTvAir] = useState();
-  const [tvrate, setTvRate] = useState();
   const [logo, setLogo] = useState("block");
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const TvData = async () => {
       try {
         const {
-          data: { results: playtv },
-        } = await apiData.tv_OnTheAir();
-        setTvPlay(playtv);
-
-        const {
-          data: { results: tvpopu },
-        } = await apiData.tv_Popular();
-        setTvpo(tvpopu);
-
-        const {
           data: { results: airtv },
         } = await apiData.tv_AiringToday();
         setTvAir(airtv);
 
-        const {
-          data: { results: ratetv },
-        } = await apiData.tv_Rated();
-        setTvRate(ratetv);
         AOS.init();
         setLoading(false);
       } catch (error) {
@@ -189,15 +175,6 @@ export const TvProgram = () => {
               </TitleMenu>
             </TitleWrap>
             <ConWrap>
-              <Con data-aos="fade-up" data-aos-duration="1500">
-                <ConBox Con={tvplay} />
-              </Con>
-              <Con data-aos="fade-up" data-aos-duration="1500">
-                <ConBox Con={tvpo} />
-              </Con>
-              <Con data-aos="fade-up" data-aos-duration="1500">
-                <ConBox Con={tvrate} />
-              </Con>
               <Con data-aos="fade-up" data-aos-duration="1500">
                 <ConBox Con={tvair} />
               </Con>

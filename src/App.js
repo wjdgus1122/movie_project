@@ -14,6 +14,10 @@ import { Globalstyle } from "./styles/Globalstyle";
 import { MvPopular } from "./pages/movie/MvPopular";
 import { MvRate } from "./pages/movie/MvRate";
 import { MvCome } from "./pages/movie/MvCome";
+import { TvPlay } from "./pages/tv/TvPlay";
+import { TvPopular } from "./pages/tv/TvPopular";
+import { TvRate } from "./pages/tv/TvRate";
+import { TvAirToday } from "./pages/tv/TvAirToday";
 
 function App() {
   return (
@@ -29,6 +33,10 @@ function App() {
           <Route path="/mvrate" element={<MvRate />} />
           <Route path="/mvcome" element={<MvCome />} />
           <Route path="/tv" element={<TvProgram />} />
+          <Route path="/tvplay" element={<TvPlay />} />
+          <Route path="/tvpopu" element={<TvPopular />} />
+          <Route path="/tvrate" element={<TvRate />} />
+          <Route path="/tvair" element={<TvAirToday />} />
           <Route path="/detail1/:id" element={<Detail1 />} />
           <Route path="/detail2/:id" element={<Detail2 />} />
           <Route path="/login" element={<Login />} />

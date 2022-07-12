@@ -26,6 +26,7 @@ const UpBtn = styled.div`
   bottom: 20px;
   right: 20px;
   cursor: pointer;
+  z-index: 9;
 `;
 
 const TitleWrap = styled.div`
@@ -160,7 +161,7 @@ export const Movie = () => {
           <PageScroll />
           <Container>
             <UpBtn onClick={upbtnclick}>
-              <FontAwesomeIcon icon={faArrowUp} />{" "}
+              <FontAwesomeIcon icon={faArrowUp} />
             </UpBtn>
             <TitleWrap>
               <Title dis={logo}>MOVIE</Title>

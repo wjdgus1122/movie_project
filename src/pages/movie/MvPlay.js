@@ -9,6 +9,25 @@ import { mainStyle } from "../../styles/Globalstyle";
 import AOS from "aos";
 import { Link } from "react-router-dom";
 import { PageScroll } from "../PageScroll";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+
+const UpBtn = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${mainStyle.color};
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 9;
+`;
 
 const TitleWrap = styled.div`
   width: 100%;
@@ -110,6 +129,12 @@ export const MvPlay = () => {
     }
   };
   window.addEventListener("scroll", sclmenu);
+  const upbtnclick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <PageTitle title="Movie" />
@@ -119,6 +144,9 @@ export const MvPlay = () => {
         <>
           <PageScroll />
           <Container>
+            <UpBtn onClick={upbtnclick}>
+              <FontAwesomeIcon icon={faArrowUp} />
+            </UpBtn>
             <TitleWrap>
               <Link to={`/movie`}>
                 <Title dis={logo}>MOVIE</Title>
