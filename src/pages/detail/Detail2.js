@@ -9,6 +9,7 @@ import { faClose, faPlay } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
 import { PageScroll } from "../PageScroll";
+import { Container } from "../Container";
 
 const DetailSection = styled.div`
   width: 100%;
@@ -86,10 +87,25 @@ const Btn = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
   @media screen and (max-width: 500px) {
     width: 100px;
     height: 50px;
   }
+  &:hover .box {
+    transform: translateX(100%);
+  }
+`;
+const BtnBox = styled.div`
+  width: 100%;
+  height: 80px;
+  border-radius: 13px;
+  background-color: ${mainStyle.color};
+  position: absolute;
+  top: 0;
+  left: -100%;
+  z-index: 1;
+  transition: all 0.5s;
 `;
 const BtnText = styled.div`
   width: 100%;
@@ -103,29 +119,17 @@ const BtnText = styled.div`
   position: relative;
   transition: all 0.5s;
   cursor: pointer;
-  &::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-radius: 13px;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: -100%;
-    transition: all 0.5s;
-  }
-  &:hover::before {
-    transform: translateX(100%);
-  }
+  z-index: 3;
+
   @media screen and (max-width: 500px) {
     font-size: 20px;
   }
 `;
 const MoText = styled.div`
   width: 100%;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 100;
-  line-height: 25px;
+  line-height: 20px;
   padding: ${mainStyle.mopadding};
   display: none;
   @media screen and (max-width: 500px) {
@@ -159,11 +163,20 @@ const NonText = styled.h1`
   padding: ${mainStyle.padding};
 `;
 
+const EpisodeWrap = styled.div``;
+const EpCon = styled.div``;
+const EpImg = styled.div``;
+const EpTextWrap = styled.div``;
+const EpTitle = styled.div``;
+const EpTime = styled.div``;
+const EpText = styled.div``;
+
 export const Detail2 = () => {
   const [de, setDe] = useState();
   const [vd, setVd] = useState();
   const [loading, setLoading] = useState(true);
   const [vddis, setVdDis] = useState("none");
+  // const [ep, setEp] = useState();
   const { id } = useParams();
   useEffect(() => {
     const moviedata = async () => {
@@ -174,6 +187,14 @@ export const Detail2 = () => {
           data: { results },
         } = await apiData.tv_video(id);
         setVd(`${results.length === 0 ? null : results[0].key}`);
+
+        // console.log(de);
+        // const {
+        //   data: { episodes },
+        // } = await apiData.tv_episode_detail(id, de.season);
+        // // setEp(episodes);
+        // console.log(episodes);
+
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -235,10 +256,16 @@ export const Detail2 = () => {
                   </STextWrap>
                   <Text>{de.overview}</Text>
                   <Btn onClick={scrollhandel}>
+                    <BtnBox className="box" />
                     <BtnText>
                       재생 <FontAwesomeIcon icon={faPlay} />
                     </BtnText>
                   </Btn>
+                  {/* <Btn>
+                    <BtnText>
+                      episode <FontAwesomeIcon icon={faPlay} />
+                    </BtnText>
+                  </Btn> */}
                 </TextWrap>
               </DetailSection>
               <MoText>{de.overview}</MoText>
@@ -254,6 +281,20 @@ export const Detail2 = () => {
                   <NonText>영상이 없습니다.</NonText>
                 )}
               </VideoWrap>
+              {/* <EpisodeWrap>
+                <Container>
+                  {ep.map((epi) => (
+                    <EpCon>
+                      <EpImg />
+                      <EpTextWrap>
+                        <EpTitle>{epi.name}</EpTitle>
+                        <EpTime>{epi.runtime}</EpTime>
+                        <EpText>{epi.overview}</EpText>
+                      </EpTextWrap>
+                    </EpCon>
+                  ))}
+                </Container>
+              </EpisodeWrap> */}
             </>
           )}
         </>

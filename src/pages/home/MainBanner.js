@@ -13,20 +13,22 @@ import { Link } from "react-router-dom";
 
 const SMainBanner = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   padding: ${mainStyle.padding};
   position: relative;
   @media screen and (max-width: 500px) {
     padding: ${mainStyle.mopadding};
+    height: 100vh;
   }
 `;
 const TextWrap = styled.div`
   position: absolute;
   left: 80px;
-  bottom: 50px;
+  bottom: 100px;
   z-index: 9;
   @media screen and (max-width: 500px) {
     left: 20px;
+    bottom: 50px;
   }
 `;
 const Title = styled.div`
@@ -124,7 +126,7 @@ export const MainBanner = ({ mvdt, tvpl, tvp }) => {
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
         <SwiperSlide>
           <SMainBanner

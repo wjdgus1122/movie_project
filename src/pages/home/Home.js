@@ -23,6 +23,7 @@ const Title = styled.div`
   font-weight: 700;
   margin-top: 50px;
   padding: ${mainStyle.padding};
+  color: ${mainStyle.color};
   @media screen and (max-width: 500px) {
     padding: ${mainStyle.mopadding};
   }
@@ -33,6 +34,7 @@ const Title2 = styled.div`
   text-align: end;
   margin-top: 50px;
   padding: ${mainStyle.padding};
+  color: ${mainStyle.color};
   @media screen and (max-width: 500px) {
     padding: ${mainStyle.mopadding};
   }

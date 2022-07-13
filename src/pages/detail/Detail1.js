@@ -5,7 +5,12 @@ import { PageTitle } from "../../PageTitle";
 import { Loading } from "../Loading";
 import { imgUrl } from "../../constant/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose, faPlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleDown,
+  faAngleUp,
+  faClose,
+  faPlay,
+} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
 import { PageScroll } from "../PageScroll";
@@ -86,10 +91,25 @@ const Btn = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
   @media screen and (max-width: 500px) {
     width: 100px;
     height: 50px;
   }
+  &:hover .box {
+    transform: translateX(100%);
+  }
+`;
+const BtnBox = styled.div`
+  width: 100%;
+  height: 80px;
+  border-radius: 13px;
+  background-color: ${mainStyle.color};
+  position: absolute;
+  top: 0;
+  left: -100%;
+  z-index: 1;
+  transition: all 0.5s;
 `;
 const BtnText = styled.div`
   width: 100%;
@@ -103,22 +123,33 @@ const BtnText = styled.div`
   position: relative;
   transition: all 0.5s;
   cursor: pointer;
-  &::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-radius: 13px;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: -100%;
-    transition: all 0.5s;
-  }
-  &:hover::before {
-    transform: translateX(100%);
-  }
+  z-index: 3;
   @media screen and (max-width: 500px) {
     font-size: 20px;
+  }
+`;
+const MoTextWrap = styled.div`
+  display: none;
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
+`;
+const MoTextBtn = styled.div`
+  width: 100%;
+  height: 30px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 500px) {
+    display: flex;
+  }
+`;
+const MoIcon = styled.div`
+  &:first-child {
+    display: ${(props) => props.modownicon};
+  }
+  &:last-child {
+    display: ${(props) => props.moupicon};
   }
 `;
 const MoText = styled.div`
@@ -126,10 +157,10 @@ const MoText = styled.div`
   font-size: 15px;
   font-weight: 100;
   line-height: 20px;
-  padding: ${mainStyle.mopadding};
+  padding: 20px;
   display: none;
   @media screen and (max-width: 500px) {
-    display: block;
+    display: ${(props) => props.motextdis};
   }
 `;
 const VideoWrap = styled.div``;
@@ -153,6 +184,7 @@ const Iframe = styled.iframe`
   width: 100%;
   height: 90%;
 `;
+
 const NonText = styled.h1`
   font-size: 20px;
   font-weight: 500;
@@ -164,6 +196,8 @@ export const Detail1 = () => {
   const [vd, setVd] = useState();
   const [loading, setLoading] = useState(true);
   const [vddis, setVdDis] = useState("none");
+  const [motext, setMoText] = useState("none");
+  const [moicon, setMoIcon] = useState("block");
   const { id } = useParams();
   useEffect(() => {
     const moviedata = async () => {
@@ -197,6 +231,15 @@ export const Detail1 = () => {
       top: 0,
       behavior: "smooth",
     });
+  };
+  const More = () => {
+    if (motext === "none") {
+      setMoText("block");
+      setMoIcon("none");
+    } else {
+      setMoText("none");
+      setMoIcon("block");
+    }
   };
   return (
     <>
@@ -235,13 +278,25 @@ export const Detail1 = () => {
                   </STextWrap>
                   <Text>{de.overview}</Text>
                   <Btn onClick={scrollhandel}>
+                    <BtnBox className="box" />
                     <BtnText>
                       재생 <FontAwesomeIcon icon={faPlay} />
                     </BtnText>
                   </Btn>
                 </TextWrap>
               </DetailSection>
-              <MoText>{de.overview}</MoText>
+              <MoTextWrap>
+                <MoText motextdis={motext}>{de.overview}</MoText>
+                <MoTextBtn onClick={More}>
+                  더보기{" "}
+                  <MoIcon modownicon={moicon}>
+                    <FontAwesomeIcon icon={faAngleDown} />
+                  </MoIcon>
+                  <MoIcon moupicon={motext}>
+                    <FontAwesomeIcon icon={faAngleUp} />
+                  </MoIcon>
+                </MoTextBtn>
+              </MoTextWrap>
               <VideoWrap>
                 {vd ? (
                   <VideoCon dis={vddis}>

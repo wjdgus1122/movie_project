@@ -17,12 +17,18 @@ const Title = styled.div`
 
 const ConImg = styled.div`
   height: 250px;
+  @media screen {
+    height: 200px;
+  }
 `;
 
 const ConTitle = styled.div`
   font-size: 20px;
   font-weight: 200;
   margin-top: 10px;
+  @media screen {
+    font-size: 15px;
+  }
 `;
 
 export const Section2 = ({ con, contitle }) => {
@@ -30,7 +36,7 @@ export const Section2 = ({ con, contitle }) => {
     breakpoints: {
       320: {
         spaceBetween: 10,
-        slidesPerView: 1.5,
+        slidesPerView: 1.2,
       },
       640: {
         spaceBetween: 30,
