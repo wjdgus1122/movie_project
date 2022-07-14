@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { PageTitle } from "../../PageTitle";
 import { mainStyle } from "../../styles/Globalstyle";
 
 const LoginDb = {
-  dbUser: "login",
+  dbUser: "test",
   dbPw: "123123123a",
 };
 
@@ -179,9 +180,11 @@ export const Login = () => {
           {errors?.pwResult?.message && (
             <ErrorMessage>{errors?.pwResult?.message}</ErrorMessage>
           )}
-          <Button opa={isValid ? 1 : 0.5} cur={isValid ? "pointer" : "auto"}>
-            Login
-          </Button>
+          <Link to={"/loginsucces"}>
+            <Button opa={isValid ? 1 : 0.5} cur={isValid ? "pointer" : "auto"}>
+              Login
+            </Button>
+          </Link>
         </FormWrap>
       </LoginWrap>
     </>

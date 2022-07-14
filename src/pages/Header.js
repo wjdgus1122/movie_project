@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../styles/Globalstyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SHeader = styled.div`
   width: 100%;
@@ -80,6 +82,11 @@ export const Header = () => {
       <MenuWrap>
         <Link to="/mypage">
           <Menu>My Page</Menu>
+        </Link>
+        <Link to="/search">
+          <Menu>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </Menu>
         </Link>
         <User />
       </MenuWrap>

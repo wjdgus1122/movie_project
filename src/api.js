@@ -24,4 +24,16 @@ export const apiData = {
   mv_video: (id) => baseapi.get(`/movie/${id}/videos`),
   tv_video: (id) => baseapi.get(`/tv/${id}/videos`),
   tv_episode_detail: (id, season) => baseapi.get(`/tv/${id}/season/${season}`),
+  mv_search: (term) =>
+    baseapi.get(`/search/movie`, {
+      params: {
+        query: term,
+      },
+    }),
+  tv_search: (term) =>
+    baseapi.get(`/search/tv`, {
+      params: {
+        query: term,
+      },
+    }),
 };
