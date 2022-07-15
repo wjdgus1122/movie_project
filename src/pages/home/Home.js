@@ -106,7 +106,6 @@ export const Home = () => {
     };
     BannerData();
   }, []);
-  console.log(tvpo);
   return (
     <>
       <PageTitle title="Home" />

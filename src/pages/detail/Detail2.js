@@ -78,6 +78,9 @@ const Text = styled.div`
     display: none;
   }
 `;
+const BtnWrap = styled.div`
+  display: flex;
+`;
 const Btn = styled.div`
   width: 150px;
   height: 80px;
@@ -88,9 +91,11 @@ const Btn = styled.div`
   align-items: center;
   overflow: hidden;
   position: relative;
+  margin-right: 30px;
   @media screen and (max-width: 500px) {
     width: 100px;
     height: 50px;
+    margin-right: 10px;
   }
   &:hover .box {
     transform: translateX(100%);
@@ -163,37 +168,70 @@ const NonText = styled.h1`
   padding: ${mainStyle.padding};
 `;
 
-const EpisodeWrap = styled.div``;
-const EpCon = styled.div``;
-const EpImg = styled.div``;
-const EpTextWrap = styled.div``;
-const EpTitle = styled.div``;
-const EpTime = styled.div``;
-const EpText = styled.div``;
+const EpisodeWrap = styled.div`
+  display: ${(props) => props.dis};
+  padding-top: 50px;
+  border-bottom: 1px solid #999;
+`;
+const EpCon = styled.div`
+  display: flex;
+  margin: 20px 0;
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 50px;
+  }
+`;
+const EpImg = styled.div`
+  width: 300px;
+  height: 200px;
+`;
+const EpTextWrap = styled.div`
+  margin-left: 30px;
+  margin-top: 20px;
+`;
+const EpTitle = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+`;
+const EpTime = styled.div`
+  font-size: 15px;
+`;
+const EpText = styled.div`
+  margin-top: 20px;
+  width: 500px;
+  line-height: 25px;
+`;
 
 export const Detail2 = () => {
   const [de, setDe] = useState();
   const [vd, setVd] = useState();
   const [loading, setLoading] = useState(true);
   const [vddis, setVdDis] = useState("none");
-  // const [ep, setEp] = useState();
+  const [epdis, setEpdis] = useState("block");
+  const [ep, setEp] = useState();
   const { id } = useParams();
   useEffect(() => {
     const moviedata = async () => {
       try {
-        const { data } = await apiData.tv_Detail(id);
-        setDe(data);
+        const { data: tvdetail } = await apiData.tv_Detail(id);
+        setDe(tvdetail);
         const {
           data: { results },
         } = await apiData.tv_video(id);
         setVd(`${results.length === 0 ? null : results[0].key}`);
 
-        // console.log(de);
-        // const {
-        //   data: { episodes },
-        // } = await apiData.tv_episode_detail(id, de.season);
-        // // setEp(episodes);
-        // console.log(episodes);
+        const season = await tvdetail.seasons;
+        const {
+          data: { episodes },
+        } = await apiData.tv_episode_detail(
+          tvdetail.id,
+          season.map((a) => a.season_number)
+        );
+        setEp(episodes);
+        console.log(episodes);
 
         setLoading(false);
       } catch (error) {
@@ -202,7 +240,9 @@ export const Detail2 = () => {
     };
     moviedata();
   }, []);
-  const scrollhandel = () => {
+
+  const playbtn = () => {
+    setEpdis("none");
     setVdDis("flex");
     setTimeout(() => {
       window.scrollTo({
@@ -213,11 +253,21 @@ export const Detail2 = () => {
   };
   const Closehandel = () => {
     setVdDis("none");
-
+    setEpdis("block");
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+  };
+  const epbtn = () => {
+    setVdDis("none");
+    setEpdis("block");
+    setTimeout(() => {
+      window.scrollTo({
+        top: 900,
+        behavior: "smooth",
+      });
+    }, 250);
   };
   return (
     <>
@@ -255,17 +305,18 @@ export const Detail2 = () => {
                     <Episode>{de.number_of_episodes}부작</Episode>
                   </STextWrap>
                   <Text>{de.overview}</Text>
-                  <Btn onClick={scrollhandel}>
-                    <BtnBox className="box" />
-                    <BtnText>
-                      재생 <FontAwesomeIcon icon={faPlay} />
-                    </BtnText>
-                  </Btn>
-                  {/* <Btn>
-                    <BtnText>
-                      episode <FontAwesomeIcon icon={faPlay} />
-                    </BtnText>
-                  </Btn> */}
+                  <BtnWrap>
+                    <Btn onClick={playbtn}>
+                      <BtnBox className="box" />
+                      <BtnText>
+                        예고편 <FontAwesomeIcon icon={faPlay} />
+                      </BtnText>
+                    </Btn>
+                    <Btn onClick={epbtn}>
+                      <BtnBox className="box" />
+                      <BtnText>episode</BtnText>
+                    </Btn>
+                  </BtnWrap>
                 </TextWrap>
               </DetailSection>
               <MoText>{de.overview}</MoText>
@@ -281,20 +332,32 @@ export const Detail2 = () => {
                   <NonText>영상이 없습니다.</NonText>
                 )}
               </VideoWrap>
-              {/* <EpisodeWrap>
+              <EpisodeWrap dis={epdis}>
                 <Container>
-                  {ep.map((epi) => (
-                    <EpCon>
-                      <EpImg />
-                      <EpTextWrap>
-                        <EpTitle>{epi.name}</EpTitle>
-                        <EpTime>{epi.runtime}</EpTime>
-                        <EpText>{epi.overview}</EpText>
-                      </EpTextWrap>
-                    </EpCon>
-                  ))}
+                  {ep && (
+                    <>
+                      {ep.map((epi) => (
+                        <EpCon>
+                          <EpImg
+                            style={{
+                              background: `url(${
+                                epi.still_path
+                                  ? `${imgUrl}${epi.still_path}`
+                                  : `https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg`
+                              }) no-repeat center/cover`,
+                            }}
+                          />
+                          <EpTextWrap>
+                            <EpTitle>{epi.name}</EpTitle>
+                            <EpTime>{epi.runtime}분</EpTime>
+                            <EpText>{epi.overview}</EpText>
+                          </EpTextWrap>
+                        </EpCon>
+                      ))}
+                    </>
+                  )}
                 </Container>
-              </EpisodeWrap> */}
+              </EpisodeWrap>
             </>
           )}
         </>

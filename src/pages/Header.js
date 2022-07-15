@@ -36,6 +36,9 @@ const MenuWrap = styled.div`
 const Menu = styled.div`
   margin-left: 30px;
   color: ${mainStyle.btncolor};
+  @media screen and (max-width: 500px) {
+    margin-left: 15px;
+  }
 `;
 const User = styled.div`
   width: 30px;
@@ -44,6 +47,9 @@ const User = styled.div`
   background-color: white;
   margin-left: 30px;
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    margin-left: 15px;
+  }
 `;
 
 export const Header = () => {
@@ -80,15 +86,14 @@ export const Header = () => {
         </Link>
       </LogoWrap>
       <MenuWrap>
-        <Link to="/mypage">
-          <Menu>My Page</Menu>
-        </Link>
         <Link to="/search">
           <Menu>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Menu>
         </Link>
-        <User />
+        <Link to="/login">
+          <User />
+        </Link>
       </MenuWrap>
     </SHeader>
   );

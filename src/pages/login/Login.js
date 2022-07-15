@@ -17,12 +17,18 @@ const LoginWrap = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 100px 0;
+  @media screen and (max-width: 500px) {
+    height: 90vh;
+  }
 `;
 const Title = styled.h3`
   font-size: 50px;
   font-weight: 700;
   color: ${mainStyle.color};
   padding-bottom: 30px;
+  @media screen and (max-width: 500px) {
+    font-size: 30px;
+  }
 `;
 const FormWrap = styled.form`
   width: 600px;
@@ -39,10 +45,20 @@ const FormWrap = styled.form`
     box-sizing: border-box;
     position: relative;
   }
+  @media screen and (max-width: 500px) {
+    width: 80%;
+    input {
+      height: 50px;
+      font-size: 15px;
+    }
+  }
 `;
 const ErrorMessage = styled.div`
   font-size: 17px;
   color: ${mainStyle.color};
+  @media screen and (max-width: 500px) {
+    font-size: 13px;
+  }
 `;
 const PasswordWrap = styled.span`
   display: flex;
@@ -56,6 +72,10 @@ const PwView = styled.span`
   top: 30px;
   right: 10px;
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+    top: 17px;
+  }
 `;
 const PwNotView = styled.span`
   display: ${(props) => props.vwnotdis};
@@ -65,6 +85,10 @@ const PwNotView = styled.span`
   top: 30px;
   right: 10px;
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+    top: 17px;
+  }
 `;
 const Button = styled.button`
   all: unset;
@@ -78,6 +102,10 @@ const Button = styled.button`
   border-radius: 10px;
   opacity: ${(props) => props.opa};
   cursor: ${(props) => props.cur};
+  @media screen and (max-width: 500px) {
+    height: 50px;
+    font-size: 20px;
+  }
 `;
 
 export const Login = () => {
@@ -180,11 +208,10 @@ export const Login = () => {
           {errors?.pwResult?.message && (
             <ErrorMessage>{errors?.pwResult?.message}</ErrorMessage>
           )}
-          <Link to={"/loginsucces"}>
-            <Button opa={isValid ? 1 : 0.5} cur={isValid ? "pointer" : "auto"}>
-              Login
-            </Button>
-          </Link>
+
+          <Button opa={isValid ? 1 : 0.5} cur={isValid ? "pointer" : "auto"}>
+            Login
+          </Button>
         </FormWrap>
       </LoginWrap>
     </>

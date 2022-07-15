@@ -280,7 +280,7 @@ export const Detail1 = () => {
                   <Btn onClick={scrollhandel}>
                     <BtnBox className="box" />
                     <BtnText>
-                      재생 <FontAwesomeIcon icon={faPlay} />
+                      예고편 <FontAwesomeIcon icon={faPlay} />
                     </BtnText>
                   </Btn>
                 </TextWrap>

@@ -23,7 +23,8 @@ export const apiData = {
   tv_Detail: (id) => baseapi.get(`/tv/${id}`),
   mv_video: (id) => baseapi.get(`/movie/${id}/videos`),
   tv_video: (id) => baseapi.get(`/tv/${id}/videos`),
-  tv_episode_detail: (id, season) => baseapi.get(`/tv/${id}/season/${season}`),
+  tv_episode_detail: (id, season_number) =>
+    baseapi.get(`/tv/${id}/season/${season_number}`),
   mv_search: (term) =>
     baseapi.get(`/search/movie`, {
       params: {

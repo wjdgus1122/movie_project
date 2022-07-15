@@ -7,6 +7,9 @@ const LoginWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    height: 90vh;
+  }
 `;
 const Title = styled.div`
   font-size: 50px;
@@ -14,10 +17,16 @@ const Title = styled.div`
   color: ${mainStyle.color};
   padding-bottom: 30px;
   padding-top: 100px;
+  @media screen and (max-width: 500px) {
+    font-size: 30px;
+  }
 `;
 const Text = styled.div`
   font-size: 50px;
   font-weight: 700;
+  @media screen and (max-width: 500px) {
+    font-size: 30px;
+  }
 `;
 const Btn = styled.div`
   width: 600px;
@@ -33,12 +42,20 @@ const Btn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 330px;
+    height: 50px;
+    font-size: 20px;
+  }
 `;
 const Back = styled.div`
   font-size: 20px;
   font-weight: 100;
   font-style: italic;
   color: ${mainStyle.btncolor};
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+  }
 `;
 
 export const LoginSucces = () => {

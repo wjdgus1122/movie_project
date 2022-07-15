@@ -7,7 +7,6 @@ import { Header } from "./pages/Header";
 import { Home } from "./pages/home/Home";
 import { Login } from "./pages/login/Login";
 import { Movie } from "./pages/movie/Movie";
-import { MyPage } from "./pages/mypage/MyPage";
 import { TvProgram } from "./pages/tv/TvProgram";
 import { MvPlay } from "./pages/movie/MvPlay";
 import { Globalstyle } from "./styles/Globalstyle";
@@ -43,7 +42,6 @@ function App() {
           <Route path="/detail2/:id" element={<Detail2 />} />
           <Route path="/login" element={<Login />} />
           <Route path="/loginsucces" element={<LoginSucces />} />
-          <Route path="/mypage" element={<MyPage />} />
           <Route path="/search" element={<Search />} />
         </Routes>
         <Footer />
