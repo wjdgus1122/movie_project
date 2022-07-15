@@ -231,7 +231,6 @@ export const Detail2 = () => {
           season.map((a) => a.season_number)
         );
         setEp(episodes);
-        console.log(episodes);
 
         setLoading(false);
       } catch (error) {

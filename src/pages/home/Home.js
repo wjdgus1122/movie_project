@@ -1,10 +1,9 @@
 import { PageTitle } from "../../PageTitle";
-import { Container } from "../Container";
 import { useEffect, useState } from "react";
 import { apiData } from "../../api";
 import { Loading } from "../Loading";
 import { MainBanner } from "./MainBanner";
-import { ContentNum, SectionNum } from "../../constant/constant";
+import { ContentNum } from "../../constant/constant";
 import { Section1 } from "./Section1";
 import { Section2 } from "./Section2";
 import styled from "styled-components";
