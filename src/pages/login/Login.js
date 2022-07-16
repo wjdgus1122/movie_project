@@ -6,7 +6,7 @@ import { PageTitle } from "../../PageTitle";
 import { mainStyle } from "../../styles/Globalstyle";
 
 const LoginDb = {
-  dbUser: "test",
+  dbUser: "testid",
   dbPw: "123123123a",
 };
 

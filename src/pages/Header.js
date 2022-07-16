@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../styles/Globalstyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleUp,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 
 const SHeader = styled.div`
   width: 100%;
@@ -34,6 +37,7 @@ const MenuWrap = styled.div`
   align-items: center;
 `;
 const Menu = styled.div`
+  font-size: 18px;
   margin-left: 30px;
   color: ${mainStyle.btncolor};
   @media screen and (max-width: 500px) {
@@ -51,9 +55,44 @@ const User = styled.div`
     margin-left: 15px;
   }
 `;
+const LogMenuWrap = styled.div`
+  width: 100px;
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 55px;
+  right: 80px;
+  z-index: 99;
+  display: ${(props) => props.dis};
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+const LogMenu = styled.div`
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: ${mainStyle.btncolor};
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const UpBtn = styled.div`
+  width: 100%;
+  height: 30px;
+  border-top: 1px solid ${mainStyle.btncolor};
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
 
 export const Header = () => {
   const [hcl, setHcl] = useState("rgba(1,1,1,0.2)");
+  const [logmenu, setLogMenu] = useState("none");
   const scroll = () => {
     const scl = window.pageYOffset;
     const wid = window.innerWidth;
@@ -73,28 +112,45 @@ export const Header = () => {
   };
   window.addEventListener("scroll", scroll);
   return (
-    <SHeader color={hcl}>
-      <LogoWrap>
-        <Link to="/">
-          <Logo>JH+</Logo>
-        </Link>
-        <Link to="/movie">
-          <Menu>Movie</Menu>
-        </Link>
-        <Link to="/tv">
-          <Menu>TV</Menu>
-        </Link>
-      </LogoWrap>
-      <MenuWrap>
-        <Link to="/search">
-          <Menu>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </Menu>
-        </Link>
+    <>
+      <SHeader color={hcl}>
+        <LogoWrap>
+          <Link to="/">
+            <Logo>JH+</Logo>
+          </Link>
+          <Link to="/movie">
+            <Menu>Movie</Menu>
+          </Link>
+          <Link to="/tv">
+            <Menu>TV</Menu>
+          </Link>
+        </LogoWrap>
+        <MenuWrap>
+          <Link to="/search">
+            <Menu>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </Menu>
+          </Link>
+
+          <User
+            onClick={() => {
+              setLogMenu("flex");
+            }}
+          />
+        </MenuWrap>
+      </SHeader>
+      <LogMenuWrap dis={logmenu}>
         <Link to="/login">
-          <User />
+          <LogMenu>로그아웃</LogMenu>
         </Link>
-      </MenuWrap>
-    </SHeader>
+        <UpBtn
+          onClick={() => {
+            setLogMenu("none");
+          }}
+        >
+          <FontAwesomeIcon icon={faAngleUp} />
+        </UpBtn>
+      </LogMenuWrap>
+    </>
   );
 };
