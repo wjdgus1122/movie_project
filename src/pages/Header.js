@@ -67,6 +67,9 @@ const LogMenuWrap = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    right: 20px;
+  }
 `;
 const LogMenu = styled.div`
   width: 100%;

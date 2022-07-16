@@ -5,7 +5,12 @@ import { PageTitle } from "../../PageTitle";
 import { Loading } from "../Loading";
 import { imgUrl } from "../../constant/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose, faPlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faClose,
+  faPlay,
+  faAngleDown,
+  faAngleUp,
+} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
 import { PageScroll } from "../PageScroll";
@@ -130,15 +135,40 @@ const BtnText = styled.div`
     font-size: 20px;
   }
 `;
+const MoTextWrap = styled.div`
+  display: none;
+  border-bottom: 1px solid #dbdbdb;
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
+`;
+const MoTextBtn = styled.div`
+  width: 100%;
+  height: 30px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 500px) {
+    display: flex;
+  }
+`;
+const MoIcon = styled.div`
+  &:first-child {
+    display: ${(props) => props.modownicon};
+  }
+  &:last-child {
+    display: ${(props) => props.moupicon};
+  }
+`;
 const MoText = styled.div`
   width: 100%;
   font-size: 15px;
   font-weight: 100;
   line-height: 20px;
-  padding: ${mainStyle.mopadding};
+  padding: 20px;
   display: none;
   @media screen and (max-width: 500px) {
-    display: block;
+    display: ${(props) => props.motextdis};
   }
 `;
 const VideoWrap = styled.div``;
@@ -170,22 +200,22 @@ const NonText = styled.h1`
 
 const EpisodeWrap = styled.div`
   display: ${(props) => props.dis};
-  padding-top: 50px;
   border-bottom: 1px solid #999;
 `;
 const EpCon = styled.div`
   display: flex;
   margin: 20px 0;
-  &:first-child {
-    margin-top: 0;
-  }
-  &:last-child {
-    margin-bottom: 50px;
+  @media screen and (max-width: 500px) {
+    margin: 20px 0 10px 0;
   }
 `;
 const EpImg = styled.div`
   width: 300px;
   height: 200px;
+  @media screen and (max-width: 500px) {
+    width: 150px;
+    height: 100px;
+  }
 `;
 const EpTextWrap = styled.div`
   margin-left: 30px;
@@ -202,13 +232,31 @@ const EpTime = styled.div`
 const EpText = styled.div`
   margin-top: 20px;
   width: 500px;
+  font-size: 15px;
   line-height: 25px;
+  display: block;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+`;
+const MoEpText = styled.div`
+  display: none;
+  font-size: 15px;
+  line-height: 20px;
+  @media screen and (max-width: 500px) {
+    display: block;
+    &:last-child {
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 export const Detail2 = () => {
   const [de, setDe] = useState();
   const [vd, setVd] = useState();
   const [loading, setLoading] = useState(true);
+  const [motext, setMoText] = useState("none");
+  const [moicon, setMoIcon] = useState("block");
   const [vddis, setVdDis] = useState("none");
   const [epdis, setEpdis] = useState("block");
   const [ep, setEp] = useState();
@@ -268,6 +316,15 @@ export const Detail2 = () => {
       });
     }, 250);
   };
+  const More = () => {
+    if (motext === "none") {
+      setMoText("block");
+      setMoIcon("none");
+    } else {
+      setMoText("none");
+      setMoIcon("block");
+    }
+  };
   return (
     <>
       <PageTitle title="Detail" />
@@ -318,7 +375,18 @@ export const Detail2 = () => {
                   </BtnWrap>
                 </TextWrap>
               </DetailSection>
-              <MoText>{de.overview}</MoText>
+              <MoTextWrap>
+                <MoText motextdis={motext}>{de.overview}</MoText>
+                <MoTextBtn onClick={More}>
+                  더보기
+                  <MoIcon modownicon={moicon}>
+                    <FontAwesomeIcon icon={faAngleDown} />
+                  </MoIcon>
+                  <MoIcon moupicon={motext}>
+                    <FontAwesomeIcon icon={faAngleUp} />
+                  </MoIcon>
+                </MoTextBtn>
+              </MoTextWrap>
               <VideoWrap>
                 {vd ? (
                   <VideoCon dis={vddis}>
@@ -336,22 +404,25 @@ export const Detail2 = () => {
                   {ep && (
                     <>
                       {ep.map((epi) => (
-                        <EpCon>
-                          <EpImg
-                            style={{
-                              background: `url(${
-                                epi.still_path
-                                  ? `${imgUrl}${epi.still_path}`
-                                  : `https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg`
-                              }) no-repeat center/cover`,
-                            }}
-                          />
-                          <EpTextWrap>
-                            <EpTitle>{epi.name}</EpTitle>
-                            <EpTime>{epi.runtime}분</EpTime>
-                            <EpText>{epi.overview}</EpText>
-                          </EpTextWrap>
-                        </EpCon>
+                        <>
+                          <EpCon>
+                            <EpImg
+                              style={{
+                                background: `url(${
+                                  epi.still_path
+                                    ? `${imgUrl}${epi.still_path}`
+                                    : `https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg`
+                                }) no-repeat center/cover`,
+                              }}
+                            />
+                            <EpTextWrap>
+                              <EpTitle>{epi.name}</EpTitle>
+                              <EpTime>{epi.runtime}분</EpTime>
+                              <EpText>{epi.overview}</EpText>
+                            </EpTextWrap>
+                          </EpCon>
+                          <MoEpText>{epi.overview}</MoEpText>
+                        </>
                       ))}
                     </>
                   )}

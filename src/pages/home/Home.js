@@ -11,7 +11,25 @@ import { mainStyle } from "../../styles/Globalstyle";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { PageScroll } from "../PageScroll";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
+const UpBtn = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${mainStyle.color};
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 9;
+`;
 const SectionWrap = styled.section`
   width: 100%;
   overflow: hidden;
@@ -105,6 +123,12 @@ export const Home = () => {
     };
     BannerData();
   }, []);
+  const upbtnclick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <PageTitle title="Home" />
@@ -114,6 +138,9 @@ export const Home = () => {
       ) : (
         <>
           <PageScroll />
+          <UpBtn onClick={upbtnclick}>
+            <FontAwesomeIcon icon={faArrowUp} />
+          </UpBtn>
           <MainBanner
             mvdt={mvplay[ContentNum]}
             tvpl={tvplay[ContentNum]}
