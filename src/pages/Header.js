@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../styles/Globalstyle";
@@ -7,12 +7,13 @@ import {
   faAngleUp,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
+import { LoginHeader } from "../constant/constant";
 
 const SHeader = styled.div`
   width: 100%;
   height: 80px;
   background-color: ${(props) => props.color};
-  display: flex;
+  display: ${(props) => props.dis};
   justify-content: space-between;
   align-items: center;
   padding: ${mainStyle.padding};
@@ -96,6 +97,7 @@ const UpBtn = styled.div`
 export const Header = () => {
   const [hcl, setHcl] = useState("rgba(1,1,1,0.2)");
   const [logmenu, setLogMenu] = useState("none");
+  const [logheader, setLogheader] = useState("flex");
   const scroll = () => {
     const scl = window.pageYOffset;
     const wid = window.innerWidth;
@@ -114,9 +116,19 @@ export const Header = () => {
     }
   };
   window.addEventListener("scroll", scroll);
+  useEffect(() => {
+    const loginhandle = () => {
+      if (LoginHeader === true) {
+        setLogheader("flex");
+      } else {
+        setLogheader("none");
+      }
+    };
+    loginhandle();
+  }, []);
   return (
     <>
-      <SHeader color={hcl}>
+      <SHeader color={hcl} dis={logheader}>
         <LogoWrap>
           <Link to="/">
             <Logo>JH+</Logo>

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { LoginHeader } from "../../constant/constant";
 import { PageTitle } from "../../PageTitle";
 import { mainStyle } from "../../styles/Globalstyle";
 
@@ -112,6 +113,7 @@ export const Login = () => {
   const [pwvw, setPwvw] = useState("block");
   const [pwnot, setPwnot] = useState("none");
   const [pwtype, setPwType] = useState("password");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -134,7 +136,8 @@ export const Login = () => {
       setError("pwResult", { message: "비밀번호가 틀렸습니다." });
     }
     if (username === dbUser && password === dbPw) {
-      alert("로그인 되었습니다.");
+      navigate("/loginsucces");
+      LoginHeader = true;
     }
   };
   const pwhandle = () => {
@@ -148,6 +151,12 @@ export const Login = () => {
       setPwnot("none");
     }
   };
+  useEffect(() => {
+    const loginpage = () => {
+      LoginHeader = false;
+    };
+    loginpage();
+  }, []);
   return (
     <>
       <PageTitle title="LogIn" />
