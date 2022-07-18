@@ -243,7 +243,7 @@ export const Detail1 = () => {
   };
   return (
     <>
-      <PageTitle title="Detail" />
+      {de && <PageTitle title={`${de.title}`} />}
       <PageScroll />
       {loading ? (
         <Loading />
