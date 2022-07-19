@@ -1,4 +1,4 @@
-import { imgUrl } from "../../constant/constant";
+import { imgUrl, MainbannerImgUrl } from "../../constant/constant";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
@@ -131,7 +131,7 @@ export const MainBanner = ({ mvdt, tvpl, tvp }) => {
         <SwiperSlide>
           <SMainBanner
             style={{
-              background: `url(${imgUrl}${mvdt.backdrop_path}) no-repeat center/cover`,
+              background: `url(${MainbannerImgUrl}${mvdt.backdrop_path}) no-repeat center/cover`,
             }}
           >
             <TextWrap>
@@ -146,7 +146,7 @@ export const MainBanner = ({ mvdt, tvpl, tvp }) => {
         <SwiperSlide>
           <SMainBanner
             style={{
-              background: `url(${imgUrl}${tvpl.backdrop_path}) no-repeat center/cover`,
+              background: `url(${MainbannerImgUrl}${tvpl.backdrop_path}) no-repeat center/cover`,
             }}
           >
             <TextWrap>
@@ -163,7 +163,7 @@ export const MainBanner = ({ mvdt, tvpl, tvp }) => {
         <SwiperSlide>
           <SMainBanner
             style={{
-              background: `url(${imgUrl}${tvp.backdrop_path}) no-repeat center/cover`,
+              background: `url(${MainbannerImgUrl}${tvp.backdrop_path}) no-repeat center/cover`,
             }}
           >
             <TextWrap>

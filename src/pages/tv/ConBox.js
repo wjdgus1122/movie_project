@@ -10,7 +10,7 @@ const ConImg = styled.div`
   position: relative;
   transition: 0.5s;
   &:hover {
-    height: 500px;
+    transform: translateY(-20px);
   }
   &:hover .contitle {
     font-size: 30px;

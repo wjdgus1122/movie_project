@@ -1,4 +1,4 @@
-import { imgUrl } from "../../constant/constant";
+import { MainbannerImgUrl } from "../../constant/constant";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
@@ -9,7 +9,7 @@ const ConImg = styled.div`
   position: relative;
   transition: 0.5s;
   &:hover {
-    height: 500px;
+    transform: translateY(-20px);
   }
   &:hover .contitle {
     font-size: 30px;
@@ -56,7 +56,7 @@ export const ConBox = ({ Con }) => {
                 style={{
                   background: `url(${
                     con.backdrop_path
-                      ? `${imgUrl}${con.backdrop_path}`
+                      ? `${MainbannerImgUrl}${con.backdrop_path}`
                       : `https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg`
                   }) no-repeat center/cover`,
                 }}

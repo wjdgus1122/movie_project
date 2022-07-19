@@ -82,7 +82,7 @@ const TvMenu = styled.div`
   color: ${mainStyle.btncolor};
 `;
 const ConWrap = styled.div`
-  padding-top: 200px;
+  padding-top: 220px;
 `;
 const Con = styled.div`
   display: grid;

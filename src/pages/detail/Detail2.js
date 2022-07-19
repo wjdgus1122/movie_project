@@ -3,18 +3,36 @@ import { useParams } from "react-router-dom";
 import { apiData } from "../../api";
 import { PageTitle } from "../../PageTitle";
 import { Loading } from "../Loading";
-import { imgUrl } from "../../constant/constant";
+import { imgUrl, MainbannerImgUrl } from "../../constant/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faClose,
   faPlay,
   faAngleDown,
   faAngleUp,
+  faArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { mainStyle } from "../../styles/Globalstyle";
 import { PageScroll } from "../PageScroll";
 import { Container } from "../Container";
+
+const UpBtn = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  display: ${(props) => props.dis};
+  justify-content: center;
+  align-items: center;
+  color: ${mainStyle.color};
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 9;
+`;
 
 const DetailSection = styled.div`
   width: 100%;
@@ -55,10 +73,8 @@ const Title = styled.div`
 `;
 
 const STextWrap = styled.div`
-  width: 60%;
   display: flex;
-  justify-content: space-between;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 500;
   margin-top: 20px;
   @media screen and (max-width: 500px) {
@@ -68,13 +84,14 @@ const STextWrap = styled.div`
 const Runtime = styled.h3``;
 const Genres = styled.ul`
   display: flex;
+  margin: 0 20px;
 `;
 const Episode = styled.h3``;
 const Text = styled.div`
   width: 70%;
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 100;
-  line-height: 35px;
+  line-height: 23px;
   margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
@@ -87,10 +104,10 @@ const BtnWrap = styled.div`
   display: flex;
 `;
 const Btn = styled.div`
-  width: 150px;
-  height: 80px;
+  width: 180px;
+  height: 50px;
   background-color: ${mainStyle.btncolor};
-  border-radius: 15px;
+  border-radius: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,8 +125,8 @@ const Btn = styled.div`
 `;
 const BtnBox = styled.div`
   width: 100%;
-  height: 80px;
-  border-radius: 13px;
+  height: 50px;
+  border-radius: 6px;
   background-color: ${mainStyle.color};
   position: absolute;
   top: 0;
@@ -120,8 +137,7 @@ const BtnBox = styled.div`
 const BtnText = styled.div`
   width: 100%;
   height: 100%;
-  border-radius: 13px;
-  font-size: 30px;
+  font-size: 24px;
   color: #333;
   display: flex;
   justify-content: space-around;
@@ -133,42 +149,6 @@ const BtnText = styled.div`
 
   @media screen and (max-width: 500px) {
     font-size: 20px;
-  }
-`;
-const MoTextWrap = styled.div`
-  display: none;
-  border-bottom: 1px solid #dbdbdb;
-  @media screen and (max-width: 500px) {
-    display: block;
-  }
-`;
-const MoTextBtn = styled.div`
-  width: 100%;
-  height: 30px;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  @media screen and (max-width: 500px) {
-    display: flex;
-  }
-`;
-const MoIcon = styled.div`
-  &:first-child {
-    display: ${(props) => props.modownicon};
-  }
-  &:last-child {
-    display: ${(props) => props.moupicon};
-  }
-`;
-const MoText = styled.div`
-  width: 100%;
-  font-size: 15px;
-  font-weight: 100;
-  line-height: 20px;
-  padding: 20px;
-  display: none;
-  @media screen and (max-width: 500px) {
-    display: ${(props) => props.motextdis};
   }
 `;
 const VideoWrap = styled.div``;
@@ -202,15 +182,25 @@ const EpisodeWrap = styled.div`
   display: ${(props) => props.dis};
   border-bottom: 1px solid #999;
 `;
-const EpCon = styled.div`
-  display: flex;
-  margin: 20px 0;
+const EpConWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 30px;
+  column-gap: 30px;
+  padding: 30px 0;
   @media screen and (max-width: 500px) {
-    margin: 20px 0 10px 0;
+    display: block;
+    padding: 0;
   }
 `;
+const EpCon = styled.div`
+  @media screen and (max-width: 500px) {
+    display: flex;
+    margin: 25px 0 0 0;
+  }
+`;
+
 const EpImg = styled.div`
-  width: 300px;
   height: 200px;
   @media screen and (max-width: 500px) {
     width: 150px;
@@ -218,31 +208,36 @@ const EpImg = styled.div`
   }
 `;
 const EpTextWrap = styled.div`
-  margin-left: 30px;
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 10px;
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
 `;
 const EpTitle = styled.div`
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-right: 30px;
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+    line-height: 20px;
+  }
 `;
 const EpTime = styled.div`
   font-size: 15px;
-`;
-const EpText = styled.div`
-  margin-top: 20px;
-  width: 500px;
-  font-size: 15px;
-  line-height: 25px;
-  display: block;
   @media screen and (max-width: 500px) {
-    display: none;
+    font-size: 13px;
+    margin-top: 10px;
   }
 `;
+
 const MoEpText = styled.div`
   display: none;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 20px;
+  margin-top: 5px;
   @media screen and (max-width: 500px) {
     display: block;
     &:last-child {
@@ -255,11 +250,10 @@ export const Detail2 = () => {
   const [de, setDe] = useState();
   const [vd, setVd] = useState();
   const [loading, setLoading] = useState(true);
-  const [motext, setMoText] = useState("none");
-  const [moicon, setMoIcon] = useState("block");
   const [vddis, setVdDis] = useState("none");
   const [epdis, setEpdis] = useState("block");
   const [ep, setEp] = useState();
+  const [upbtn, setUpBtn] = useState("none");
   const { id } = useParams();
   useEffect(() => {
     const moviedata = async () => {
@@ -316,15 +310,22 @@ export const Detail2 = () => {
       });
     }, 250);
   };
-  const More = () => {
-    if (motext === "none") {
-      setMoText("block");
-      setMoIcon("none");
+
+  const upbtnclick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  const upbtnhandle = () => {
+    const scl = window.pageYOffset;
+    if (scl > 500) {
+      setUpBtn("flex");
     } else {
-      setMoText("none");
-      setMoIcon("block");
+      setUpBtn("none");
     }
   };
+  window.addEventListener("scroll", upbtnhandle);
   return (
     <>
       {de && <PageTitle title={`${de.name}`} />}
@@ -335,11 +336,14 @@ export const Detail2 = () => {
         <>
           {de && (
             <>
+              <UpBtn onClick={upbtnclick} dis={upbtn}>
+                <FontAwesomeIcon icon={faArrowUp} />
+              </UpBtn>
               <DetailSection
                 style={{
                   background: `url(${
                     de.backdrop_path
-                      ? `${imgUrl}${de.backdrop_path}`
+                      ? `${MainbannerImgUrl}${de.backdrop_path}`
                       : `https://cdn.pixabay.com/photo/2017/11/24/10/43/ticket-2974645__340.jpg`
                   }) no-repeat center/cover`,
                 }}
@@ -375,18 +379,6 @@ export const Detail2 = () => {
                   </BtnWrap>
                 </TextWrap>
               </DetailSection>
-              <MoTextWrap>
-                <MoText motextdis={motext}>{de.overview}</MoText>
-                <MoTextBtn onClick={More}>
-                  더보기
-                  <MoIcon modownicon={moicon}>
-                    <FontAwesomeIcon icon={faAngleDown} />
-                  </MoIcon>
-                  <MoIcon moupicon={motext}>
-                    <FontAwesomeIcon icon={faAngleUp} />
-                  </MoIcon>
-                </MoTextBtn>
-              </MoTextWrap>
               <VideoWrap>
                 {vd ? (
                   <VideoCon dis={vddis}>
@@ -403,27 +395,28 @@ export const Detail2 = () => {
                 <Container>
                   {ep && (
                     <>
-                      {ep.map((epi) => (
-                        <>
-                          <EpCon>
-                            <EpImg
-                              style={{
-                                background: `url(${
-                                  epi.still_path
-                                    ? `${imgUrl}${epi.still_path}`
-                                    : `https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg`
-                                }) no-repeat center/cover`,
-                              }}
-                            />
-                            <EpTextWrap>
-                              <EpTitle>{epi.name}</EpTitle>
-                              <EpTime>{epi.runtime}분</EpTime>
-                              <EpText>{epi.overview}</EpText>
-                            </EpTextWrap>
-                          </EpCon>
-                          <MoEpText>{epi.overview}</MoEpText>
-                        </>
-                      ))}
+                      <EpConWrap>
+                        {ep.map((epi) => (
+                          <>
+                            <EpCon>
+                              <EpImg
+                                style={{
+                                  background: `url(${
+                                    epi.still_path
+                                      ? `${imgUrl}${epi.still_path}`
+                                      : `https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg`
+                                  }) no-repeat center/cover`,
+                                }}
+                              />
+                              <EpTextWrap>
+                                <EpTitle>{epi.name}</EpTitle>
+                                <EpTime>{epi.runtime}분</EpTime>
+                              </EpTextWrap>
+                            </EpCon>
+                            <MoEpText>{epi.overview}</MoEpText>
+                          </>
+                        ))}
+                      </EpConWrap>
                     </>
                   )}
                 </Container>

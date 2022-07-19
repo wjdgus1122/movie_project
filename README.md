@@ -18,8 +18,7 @@
 
 - [x] Movie Page
 - [x] TV Program Page
-- [ ] Login
-- [ ] My Page
+- [x] Login
 
 ## Detail Page
 

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { apiData } from "../../api";
 import { PageTitle } from "../../PageTitle";
 import { Loading } from "../Loading";
-import { imgUrl } from "../../constant/constant";
+import { MainbannerImgUrl } from "../../constant/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDown,
@@ -54,10 +54,8 @@ const Title = styled.div`
 `;
 
 const STextWrap = styled.div`
-  width: 60%;
   display: flex;
-  justify-content: space-between;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 500;
   margin-top: 20px;
   @media screen and (max-width: 500px) {
@@ -67,13 +65,14 @@ const STextWrap = styled.div`
 const Runtime = styled.h3``;
 const Genres = styled.ul`
   display: flex;
+  margin: 0 20px;
 `;
 const Date = styled.h3``;
 const Text = styled.div`
   width: 70%;
-  font-size: 25px;
+  font-size: 15px;
   font-weight: 100;
-  line-height: 35px;
+  line-height: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   position: relative;
@@ -83,10 +82,10 @@ const Text = styled.div`
   }
 `;
 const Btn = styled.div`
-  width: 150px;
-  height: 80px;
+  width: 180px;
+  height: 50px;
   background-color: ${mainStyle.btncolor};
-  border-radius: 15px;
+  border-radius: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,8 +101,8 @@ const Btn = styled.div`
 `;
 const BtnBox = styled.div`
   width: 100%;
-  height: 80px;
-  border-radius: 13px;
+  height: 50px;
+  border-radius: 6px;
   background-color: ${mainStyle.color};
   position: absolute;
   top: 0;
@@ -114,8 +113,7 @@ const BtnBox = styled.div`
 const BtnText = styled.div`
   width: 100%;
   height: 100%;
-  border-radius: 13px;
-  font-size: 30px;
+  font-size: 24px;
   color: #333;
   display: flex;
   justify-content: space-around;
@@ -128,41 +126,7 @@ const BtnText = styled.div`
     font-size: 20px;
   }
 `;
-const MoTextWrap = styled.div`
-  display: none;
-  @media screen and (max-width: 500px) {
-    display: block;
-  }
-`;
-const MoTextBtn = styled.div`
-  width: 100%;
-  height: 30px;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  @media screen and (max-width: 500px) {
-    display: flex;
-  }
-`;
-const MoIcon = styled.div`
-  &:first-child {
-    display: ${(props) => props.modownicon};
-  }
-  &:last-child {
-    display: ${(props) => props.moupicon};
-  }
-`;
-const MoText = styled.div`
-  width: 100%;
-  font-size: 15px;
-  font-weight: 100;
-  line-height: 20px;
-  padding: 20px;
-  display: none;
-  @media screen and (max-width: 500px) {
-    display: ${(props) => props.motextdis};
-  }
-`;
+
 const VideoWrap = styled.div``;
 const VideoCon = styled.div`
   width: 100%;
@@ -197,7 +161,6 @@ export const Detail1 = () => {
   const [loading, setLoading] = useState(true);
   const [vddis, setVdDis] = useState("none");
   const [motext, setMoText] = useState("none");
-  const [moicon, setMoIcon] = useState("block");
   const { id } = useParams();
   useEffect(() => {
     const moviedata = async () => {
@@ -232,15 +195,6 @@ export const Detail1 = () => {
       behavior: "smooth",
     });
   };
-  const More = () => {
-    if (motext === "none") {
-      setMoText("block");
-      setMoIcon("none");
-    } else {
-      setMoText("none");
-      setMoIcon("block");
-    }
-  };
   return (
     <>
       {de && <PageTitle title={`${de.title}`} />}
@@ -255,7 +209,7 @@ export const Detail1 = () => {
                 style={{
                   background: `url(${
                     de.backdrop_path
-                      ? `${imgUrl}${de.backdrop_path}`
+                      ? `${MainbannerImgUrl}${de.backdrop_path}`
                       : `https://cdn.pixabay.com/photo/2017/11/24/10/43/ticket-2974645__340.jpg`
                   }) no-repeat center/cover`,
                 }}
@@ -285,18 +239,7 @@ export const Detail1 = () => {
                   </Btn>
                 </TextWrap>
               </DetailSection>
-              <MoTextWrap>
-                <MoText motextdis={motext}>{de.overview}</MoText>
-                <MoTextBtn onClick={More}>
-                  더보기{" "}
-                  <MoIcon modownicon={moicon}>
-                    <FontAwesomeIcon icon={faAngleDown} />
-                  </MoIcon>
-                  <MoIcon moupicon={motext}>
-                    <FontAwesomeIcon icon={faAngleUp} />
-                  </MoIcon>
-                </MoTextBtn>
-              </MoTextWrap>
+
               <VideoWrap>
                 {vd ? (
                   <VideoCon dis={vddis}>

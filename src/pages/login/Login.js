@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { LoginHeader } from "../../constant/constant";
 import { PageTitle } from "../../PageTitle";
 import { mainStyle } from "../../styles/Globalstyle";
 
@@ -38,7 +37,7 @@ const FormWrap = styled.form`
     width: 100%;
     height: 80px;
     font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.65);
     opacity: 0.5;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -137,7 +136,6 @@ export const Login = () => {
     }
     if (username === dbUser && password === dbPw) {
       navigate("/loginsucces");
-      LoginHeader = true;
     }
   };
   const pwhandle = () => {
@@ -151,12 +149,7 @@ export const Login = () => {
       setPwnot("none");
     }
   };
-  useEffect(() => {
-    const loginpage = () => {
-      LoginHeader = false;
-    };
-    loginpage();
-  }, []);
+
   return (
     <>
       <PageTitle title="LogIn" />
