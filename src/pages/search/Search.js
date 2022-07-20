@@ -125,7 +125,7 @@ export const Search = () => {
             <Container>
               <ConWrap>
                 {mvsh.map((con) => (
-                  <Link to={`/datail1/${con.id}`}>
+                  <Link to={`/detail1/${con.id}`}>
                     <Con>
                       <ConImg
                         style={{

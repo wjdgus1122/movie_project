@@ -70,7 +70,7 @@ const Genres = styled.ul`
 const Date = styled.h3``;
 const Text = styled.div`
   width: 70%;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 100;
   line-height: 20px;
   margin-top: 20px;
