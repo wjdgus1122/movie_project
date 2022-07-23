@@ -14,9 +14,22 @@
 
 :computer: 사용한 기술 :computer:
 
--
+### skill
 
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
 
-- 에디터
+### 에디터
+
   <img src="https://img.shields.io/badge/visualstudio-007ACC?style=for-the-badge&logo=visualstudio&logoColor=white">
+
+## Pages
+
+### Header
+
+      *로고 : 홈으로 이동
+      *Movie, TV Program : Movie, TV Program 서브페이지로 이동
+      *돋보기 아이콘 : Search 페이지로 이동
+      *User로고 : Logout박스 생성
+                  *Logout누르면 Login페이지로 이동
+
+### Home
