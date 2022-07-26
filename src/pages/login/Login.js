@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PageTitle } from "../../PageTitle";
 import { mainStyle } from "../../styles/Globalstyle";
@@ -135,7 +135,7 @@ export const Login = () => {
       setError("pwResult", { message: "비밀번호가 틀렸습니다." });
     }
     if (username === dbUser && password === dbPw) {
-      navigate("/loginsucces");
+      navigate("/");
     }
   };
   const pwhandle = () => {

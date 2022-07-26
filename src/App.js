@@ -17,9 +17,7 @@ import { TvPlay } from "./pages/tv/TvPlay";
 import { TvPopular } from "./pages/tv/TvPopular";
 import { TvRate } from "./pages/tv/TvRate";
 import { TvAirToday } from "./pages/tv/TvAirToday";
-import { LoginSucces } from "./pages/login/LoginSucces";
 import { Search } from "./pages/search/Search";
-import { SignUp } from "./pages/login/SignUp";
 
 function App() {
   return (
@@ -42,7 +40,6 @@ function App() {
           <Route path="/detail1/:id" element={<Detail1 />} />
           <Route path="/detail2/:id" element={<Detail2 />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
           <Route path="/search" element={<Search />} />
         </Routes>
         <Footer />
