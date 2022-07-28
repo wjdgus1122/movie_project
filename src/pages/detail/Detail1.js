@@ -72,7 +72,7 @@ const Text = styled.div`
   width: 70%;
   font-size: 18px;
   font-weight: 100;
-  line-height: 20px;
+  line-height: 23px;
   margin-top: 20px;
   margin-bottom: 20px;
   position: relative;

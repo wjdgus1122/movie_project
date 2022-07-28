@@ -24,7 +24,7 @@ const SMainBanner = styled.section`
 const TextWrap = styled.div`
   position: absolute;
   left: 80px;
-  bottom: 100px;
+  bottom: 300px;
   z-index: 9;
   @media screen and (max-width: 500px) {
     left: 20px;
@@ -44,14 +44,14 @@ const Title = styled.div`
 `;
 
 const Btn = styled.div`
-  width: 100px;
+  width: 180px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid ${mainStyle.btncolor};
   color: ${mainStyle.btncolor};
-  border-radius: 15px;
+  border-radius: 6px;
   margin-top: 30px;
   font-size: 18px;
   cursor: pointer;
@@ -70,7 +70,7 @@ const Btn = styled.div`
       width: 100%;
       height: 100%;
       background-color: rgb(158, 6, 6);
-      border-radius: 13px;
+      border-radius: 6px;
       position: absolute;
       top: 0;
       left: -100%;
@@ -88,7 +88,7 @@ const Btn = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgb(215, 215, 215);
-    border-radius: 13px;
+    border-radius: 6px;
     position: absolute;
     top: 0;
     left: -100%;
@@ -113,7 +113,7 @@ const Btn = styled.div`
 `;
 const Box = styled.div`
   width: 100%;
-  height: 60%;
+  height: 80%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
   position: absolute;
   bottom: 0;
