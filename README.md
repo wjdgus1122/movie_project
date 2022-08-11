@@ -56,7 +56,9 @@
 
 -왼쪽이 영화 서브페이지, 오른쪽이 TV Program 서브페이지
 
+<div align="center">
 <img src="https://user-images.githubusercontent.com/106130435/184136304-fca90f78-e6f6-4f82-b9dc-422bd95e8420.png" width : 300px height : 500px/><img src="https://user-images.githubusercontent.com/106130435/184136500-295b65b4-eec7-4b3f-925b-dffa68c73252.png" width : 300px height : 500px/>
+</div>
 
 - 각 영화 주제별로 모두 나열
 - TV 프로그램 주제별로 모두 나열
@@ -65,7 +67,9 @@
 
 - 왼쪽은 영화 디테일 화면, 오른쪽은 TV Program화면
 
+<div align="center">
   <img src="https://user-images.githubusercontent.com/106130435/184137636-aa597537-6a7c-45b1-929d-436c073f5b18.png" width : 300px height : 500px/><img src="https://user-images.githubusercontent.com/106130435/184137682-9ec6f724-c416-44c5-ba19-66325db956a0.png" width : 300px height : 500px/>
+  </div>
 
 - 영화 디테일에서는 예고편을 볼 수 있음
 - TV Program에서는 프로그램의 에피소드 정보를 볼 수 있음
@@ -74,7 +78,9 @@
 
 - 왼쪽이 검색전 화면, 오른쪽이 검색 후 화면
 
+<div align="center">
   <img src="https://user-images.githubusercontent.com/106130435/184136634-9a6efc0d-93ab-4140-ac26-d4d8915fbc30.png" width : 300px height : 500px/><img src="https://user-images.githubusercontent.com/106130435/184136781-3e266911-7176-44f0-937b-eadbebd45284.png" width : 300px height : 500px/>
+  </div>
 
 - 단어를 검색하면 관련 컨텐츠가 밑에 생성
 - 컨텐츠 클릭하면 해당 컨텐츠 detail 페이지로 이동
