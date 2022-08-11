@@ -1,6 +1,6 @@
-:movie_camera: 프로젝트 소개 :movie_camera:
+# :movie_camera: 프로젝트 소개 :movie_camera:
 
-# WELCOME TO JH+
+## WELCOME TO JH+
 
 ## 프로젝트명 : MOVIE_PROJECT
 
@@ -8,11 +8,9 @@
       영화와 TV 프로그램에 대한 정보를 얻을 수 있는 사이트 입니다.
 - [x] 각 프로그램과 영화의 예고편과 에피소드 정보를 볼 수 있습니다.
 
-:date: 제작기간
+### :date: 제작기간 2022.07.05 ~ 2022.07.20
 
-제작기간 : :date: 2022.07.05 ~ 2022.07.20
-
-:computer: 사용한 기술 :computer:
+### :computer: 사용한 기술 :computer:
 
 ### skill
 
