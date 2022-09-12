@@ -23,11 +23,10 @@
   <img src="https://img.shields.io/badge/visualstudio-007ACC?style=for-the-badge&logo=visualstudio&logoColor=white">
   
 ### 프로젝트를 진행하면서 배운점 :pencil2:
+</div>
 - 처음으로 웹페이지를 혼자 모두 만들어 보면서 각 페이지는 어떤식으로 UI를 배치해야하는지 생각하면서 더 성장 할 수 있었습니다.
 - 로그인 기능을 넣으면서 input태그를 사용하여 유효성 검사를 어떻게 하는지 배울 수 있었습니다.
 - 외부 데이터를 끌어오면서 api를 어떻게 끌어오는지 배울 수 있었습니다.
-
-</div>
 
 ## Pages
 
